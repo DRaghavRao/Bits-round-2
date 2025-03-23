@@ -1,0 +1,435 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Dark Mode (Default) */
+body.dark-mode {
+    background: linear-gradient(135deg, #1e1e2f, #2a2a3d);
+    color: #ffffff;
+}
+
+/* Light Mode */
+body.light-mode {
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    color: #333333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Mode Toggle Button */
+.mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#mode-btn {
+    background: #ff007a;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+body.light-mode #mode-btn {
+    background: #00ddeb;
+    color: #333;
+}
+
+#mode-btn:hover {
+    opacity: 0.9;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #00ddeb, #ff007a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode .search-bar {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
+    border: none;
+    background: transparent;
+    color: inherit;
+    padding: 8px;
+    font-size: 1rem;
+    outline: none;
+    width: 200px;
+}
+
+.search-bar button {
+    background: #ff007a;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+body.light-mode .search-bar button {
+    background: #00ddeb;
+    color: #333;
+}
+
+.search-bar button:hover {
+    transform: scale(1.1);
+}
+
+/* Table Styling */
+.table-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    overflow-x: auto;
+}
+
+body.light-mode .table-container {
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    background: #ff007a;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+body.light-mode thead th {
+    background: #00ddeb;
+    color: #333;
+}
+
+tbody tr {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+body.light-mode tbody tr:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+td:nth-child(3) {
+    color: #00ddeb;
+}
+
+/* Product Detail Page Styling */
+.back-btn {
+    display: inline-block;
+    color: #00ddeb;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+body.light-mode .back-btn {
+    color: #ff007a;
+}
+
+.back-btn:hover {
+    color: #ff007a;
+}
+
+body.light-mode .back-btn:hover {
+    color: #00ddeb;
+}
+
+.product-details {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+body.light-mode .product-details {
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.product-details h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #00ddeb, #ff007a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.detail-card {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+body.light-mode .detail-card {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.detail-card p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+.detail-card strong {
+    color: #00ddeb;
+}
+
+.predict-btn {
+    background: #ff007a;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-mode .predict-btn {
+    background: #00ddeb;
+    color: #333;
+}
+
+.predict-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
+}
+
+body.light-mode .predict-btn:hover {
+    box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+}
+
+/* Popup Styling */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+body.light-mode .popup-content {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.popup-content p {
+    font-size: 1.2rem;
+}
+
+.popup-content strong {
+    color: #00ddeb;
+}
+
+/* Login/Signup Styling */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.form-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    max-width: 400px;
+}
+
+body.light-mode .form-box {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.form-box h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    background: linear-gradient(90deg, #00ddeb, #ff007a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: inherit;
+    font-size: 1rem;
+    outline: none;
+}
+
+body.light-mode .input-group input,
+body.light-mode .input-group select {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.auth-btn {
+    background: #ff007a;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-mode .auth-btn {
+    background: #00ddeb;
+    color: #333;
+}
+
+.auth-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
+}
+
+body.light-mode .auth-btn:hover {
+    box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
+}
+
+.switch-text {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.switch-text a {
+    color: #00ddeb;
+    text-decoration: none;
+}
+
+body.light-mode .switch-text a {
+    color: #ff007a;
+}
+
+.switch-text a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header, .product-details, .form-box {
+        text-align: center;
+    }
+
+    .search-bar {
+        margin-top: 20px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .search-bar input {
+        width: 100%;
+    }
+
+    table, .detail-card, .form-box {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    thead th, td, .detail-card p, .input-group label {
+        padding: 10px;
+    }
+
+    header h1, .product-details h2, .form-box h2 {
+        font-size: 1.8rem;
+    }
+}

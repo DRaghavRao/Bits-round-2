@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="styles-4.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+    <div class="mode-toggle">
+        <button id="mode-btn">Toggle Light Mode</button>
+    </div>
+    <div class="container">
+        <!-- Back Button -->
+        <a href="website-4.html" class="back-btn">← Back to Dashboard</a>
+
+        <!-- Product Details -->
+        <section class="product-details">
+            <h2>Product Details</h2>
+            <div class="detail-card" id="product-info">
+                <!-- Product details will be populated via JavaScript -->
+            </div>
+            <button class="predict-btn" onclick="showPredictionPopup()">Predict Sales</button>
+        </section>
+
+        <!-- Prediction Popup -->
+        <div class="popup" id="prediction-popup">
+            <div class="popup-content">
+                <p id="popup-message">Predicting sales analysis...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample product data (to be replaced with backend integration)
+        const products = {
+            "P001": { id: "P001", name: "Wireless Mouse", price: "$29.99", stock: 150, supplier: "TechCorp", lastUpdated: "2025-03-20" },
+            "P002": { id: "P002", name: "Ergonomic Keyboard", price: "$59.99", stock: 80, supplier: "KeyMaster", lastUpdated: "2025-03-21" },
+            "P003": { id: "P003", name: "4K Monitor", price: "$299.99", stock: 25, supplier: "ViewSonic", lastUpdated: "2025-03-19" }
+        };
+
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get("id");
+        const product = products[productId];
+
+        // Populate product details
+        if (product) {
+            document.getElementById("product-info").innerHTML = `
+                <p><strong>Product ID:</strong> ${product.id}</p>
+                <p><strong>Name:</strong> ${product.name}</p>
+                <p><strong>Price:</strong> ${product.price}</p>
+                <p><strong>Stock Quantity:</strong> ${product.stock}</p>
+                <p><strong>Supplier:</strong> ${product.supplier}</p>
+                <p><strong>Last Updated:</strong> ${product.lastUpdated}</p>
+            `;
+        }
+
+        // Prediction Popup Logic
+        function showPredictionPopup() {
+            const popup = document.getElementById("prediction-popup");
+            popup.style.display = "flex";
+
+            // Simulate prediction delay
+            setTimeout(() => {
+                const predictedSales = (Math.random() * 50 + 50).toFixed(2); // Mock prediction
+                document.getElementById("popup-message").innerHTML = `
+                    Predicted Sales for ${product.name} on 2025-03-23: <strong>${predictedSales} units</strong>
+                `;
+            }, 2000); // 2-second delay to mimic prediction processing
+        }
+
+        // Mode Toggle
+        const modeBtn = document.getElementById("mode-btn");
+        modeBtn.addEventListener("click", () => {
+            document.body.classList.toggle("light-mode");
+            document.body.classList.toggle("dark-mode");
+            modeBtn.textContent = document.body.classList.contains("light-mode") ? "Toggle Dark Mode" : "Toggle Light Mode";
+        });
+    </script>
+</body>
+</html>
